@@ -28,10 +28,11 @@ public class SaleService {
 	
 	@Autowired
 	private SellerRepository sellerRepository;
-
+	
 	@Transactional(readOnly = true)
 	public Page<SaleDTO> findAll(Pageable pageable) {
 		
+		// all sellers are gotten from H2 at once instead of one by one
 		sellerRepository.findAll();
 		Page<Sale> result = repository.findAll(pageable);
 		return result.map(x -> new SaleDTO(x));

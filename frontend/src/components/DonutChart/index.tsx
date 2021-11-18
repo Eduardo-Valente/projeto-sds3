@@ -10,6 +10,12 @@ type ChartData = {
     series: number[];
 }
 
+/*
+ useState is used to guarantee the data is going to be retrieved from API to 
+ render the DonutChart
+ setChartData is called endlessly if useEffect is not used.
+*/
+
 const DonutChart = () => {
 
     const [chartData, setChartData] = useState<ChartData>({ labels: [], series: [] });
@@ -34,7 +40,9 @@ const DonutChart = () => {
 
     return (
         <Chart
-            options={{ ...options, labels: chartData.labels }}
+        // Só é possível adicionar mais de uma propriedade
+        // com duas chaves    
+        options={{ ...options, labels: chartData.labels }}
             series={chartData.series}
             type="donut"
             height="240"
