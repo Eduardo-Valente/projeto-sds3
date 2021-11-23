@@ -4,6 +4,11 @@ import java.time.LocalDate;
 
 import com.devsuperior.dsvendas.entities.Sale;
 
+/*
+ * One of the key points of a DTO object is it isn't associated with the database
+ * opposite to the entity. Other thing is the DTO doesn't hold any
+ * sensitive information the entity mayhap has.
+ */
 public class SaleDTO {
 
 	private Long id;

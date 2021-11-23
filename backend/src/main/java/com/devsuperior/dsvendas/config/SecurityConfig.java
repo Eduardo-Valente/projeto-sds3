@@ -28,12 +28,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			http.headers().frameOptions().disable();
 		}
 		
-		// doesn't store requests state
+		// Cross Origin Resource Sharing
+		// Cross Site Request Forgery
 		http.cors().and().csrf().disable();
+		// doesn't store requests state
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		http.authorizeRequests().anyRequest().permitAll();
 	}
 
+	/*
+	 * Classpath scanning consists in annotating methods and classes to make 
+	 * Spring know what layers they belong to.
+	 * For example, the @Repository annotation allows Spring recognize a DAO class
+	 * meanwhile @RestController identifies a REST Controller class.
+	 */
 	@Bean
 	CorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration configuration = new CorsConfiguration().applyPermitDefaultValues();
